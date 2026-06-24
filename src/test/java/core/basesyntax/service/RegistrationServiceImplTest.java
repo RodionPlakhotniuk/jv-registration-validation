@@ -159,6 +159,18 @@ class RegistrationServiceImplTest {
     }
 
     @Test
+    void register_negativeAge_notOk() {
+        User user = new User();
+        user.setLogin("32g43g34g43");
+        user.setPassword("32r32freg4ggr");
+        user.setAge(-2);
+
+        assertThrows(RegistrationException.class,
+                () -> registrationService.register(user)
+        );
+    }
+
+    @Test
     void register_validUser_ok() {
         User user = new User();
         user.setLogin("32g43g34g43");
